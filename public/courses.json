@@ -1,0 +1,111 @@
+[{
+        "id": 1,
+        "title": "Complete Web Development Bootcamp",
+        "instructor": "John Doe",
+        "duration": "20 hours",
+        "rating": 4.8,
+        "level": "Beginner",
+        "description": "Learn full-stack web development from scratch using MERN stack.",
+        "image": "https://i.ibb.co/Lzf3vV7/web-dev.png",
+        "category": "Development"
+    },
+    {
+        "id": 2,
+        "title": "Mastering React and Next.js",
+        "instructor": "Jane Smith",
+        "duration": "15 hours",
+        "rating": 4.9,
+        "level": "Intermediate",
+        "description": "Build high-performance web applications with Next.js 14.",
+        "image": "https://i.ibb.co/vXyY7fB/nextjs.png",
+        "category": "Development"
+    },
+    {
+        "id": 3,
+        "title": "UI/UX Design Essentials",
+        "instructor": "Sarah Wilson",
+        "duration": "12 hours",
+        "rating": 4.7,
+        "level": "Beginner",
+        "description": "Master Figma and design beautiful user interfaces.",
+        "image": "https://i.ibb.co/fN1vVvD/uiux.png",
+        "category": "Design"
+    },
+    {
+        "id": 4,
+        "title": "Digital Marketing Strategy 2024",
+        "instructor": "Mark Thompson",
+        "duration": "10 hours",
+        "rating": 4.6,
+        "level": "All Levels",
+        "description": "Grow your business with SEO, SEM, and Social Media Marketing.",
+        "image": "https://i.ibb.co/m0yVvVC/marketing.png",
+        "category": "Marketing"
+    },
+    {
+        "id": 5,
+        "title": "Python for Data Science",
+        "instructor": "David Miller",
+        "duration": "18 hours",
+        "rating": 4.8,
+        "level": "Intermediate",
+        "description": "Learn Python libraries like Pandas, NumPy, and Matplotlib.",
+        "image": "https://i.ibb.co/ZzVvVvE/python-ds.png",
+        "category": "Data Science"
+    },
+    {
+        "id": 6,
+        "title": "Advanced Graphic Design",
+        "instructor": "Emma Davis",
+        "duration": "14 hours",
+        "rating": 4.5,
+        "level": "Advanced",
+        "description": "Master Adobe Illustrator and Photoshop for professional branding.",
+        "image": "https://i.ibb.co/k0yVvVF/graphic-design.png",
+        "category": "Design"
+    },
+    {
+        "id": 7,
+        "title": "Node.js and MongoDB Masterclass",
+        "instructor": "Alex Carter",
+        "duration": "16 hours",
+        "rating": 4.7,
+        "level": "Intermediate",
+        "description": "Build scalable backend systems with Node and MongoDB Atlas.",
+        "image": "https://i.ibb.co/j0yVvVG/nodejs.png",
+        "category": "Development"
+    },
+    {
+        "id": 8,
+        "title": "Facebook Ads & Instagram Growth",
+        "instructor": "Laura White",
+        "duration": "8 hours",
+        "rating": 4.9,
+        "level": "Beginner",
+        "description": "Create high-converting ad campaigns and grow your audience.",
+        "image": "https://i.ibb.co/h0yVvVH/social-media.png",
+        "category": "Marketing"
+    },
+    {
+        "id": 9,
+        "title": "Cyber Security for Beginners",
+        "instructor": "Chris Evans",
+        "duration": "22 hours",
+        "rating": 4.8,
+        "level": "Beginner",
+        "description": "Protect your digital assets and learn ethical hacking basics.",
+        "image": "https://i.ibb.co/g0yVvVI/cyber-security.png",
+        "category": "IT & Software"
+    },
+    {
+        "id": 10,
+        "title": "Full-Stack Django with Python",
+        "instructor": "Michael Scott",
+        "duration": "25 hours",
+        "rating": 4.6,
+        "level": "Intermediate",
+        "description": "Build robust web applications using Python and Django framework.",
+        "image": "https://i.ibb.co/e0yVvVJ/django.png",
+        "category": "Development"
+    }
+]
