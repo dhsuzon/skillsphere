@@ -32,4 +32,4 @@ The following libraries were used to build the application:
 ## 🔧 Installation & Setup
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/dhsuzon/assignment_8.git](https://github.com/dhsuzon/assignment_8.git)
+   git clone  [https://github.com/dhsuzon/assignment_8.git](https://github.com/dhsuzon/assignment_8.git)
