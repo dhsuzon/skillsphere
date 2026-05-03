@@ -1,12 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client"; // আপনার পাথ অনুযায়ী
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const isLoggedIn = false;
-  const user = {
-    name: "Suzon",
-    avatar:
-      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+  const router = useRouter();
+  const { data: session, isPending } = authClient.useSession();
+  const isLoggedIn = !!session;
+  const user = session?.user;
+
+  const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("Logged out successfully");
+          router.push("/login");
+          router.refresh();
+        },
+      },
+    });
   };
 
   const Links = (
@@ -65,18 +79,20 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 z-10 p-2 shadow-lg bg-white text-gray-800 rounded-box w-52 border border-orange-100"
+              className="menu dropdown-content mt-3 z-10 p-2 shadow-xl bg-white text-gray-800 rounded-box w-52 border border-orange-100"
             >
               {Links}
             </ul>
           </div>
 
-          <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-orange-600 to-yellow-500 bg-clip-text text-transparent px-1 sm:px-2 whitespace-nowrap">
+          <Link
+            href="/"
+            className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-orange-600 to-yellow-500 bg-clip-text text-transparent px-1 sm:px-2 whitespace-nowrap cursor-pointer"
+          >
             SkillSphere
-          </span>
+          </Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -85,52 +101,82 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="navbar-end gap-2">
-          {isLoggedIn ? (
+        <div className="navbar-end gap-3">
+          {isPending ? (
+            <span className="loading loading-spinner loading-sm text-orange-500"></span>
+          ) : isLoggedIn ? (
             <div className="dropdown dropdown-end">
+              {/* --- প্রোফাইল আইকন (Avatar) ডিজাইন --- */}
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar ring-1 md:ring-2 ring-orange-400 ring-offset-2"
+                className="btn btn-ghost btn-circle avatar ring-2 ring-orange-500 ring-offset-2 hover:ring-orange-600 transition-all duration-300"
               >
-                <div className="w-9 sm:w-10 rounded-full overflow-hidden">
+                <div className="w-10 rounded-full overflow-hidden">
                   <Image
                     alt="User Avatar"
-                    src={user.avatar}
+                    src={
+                      user?.image ||
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    }
                     width={40}
                     height={40}
+                    className="object-cover"
                   />
                 </div>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-white text-gray-800 z-10 mt-3 w-48 sm:w-52 p-2 shadow-xl border border-gray-100 border-t-4 border-t-orange-500"
+                className="menu dropdown-content bg-white text-gray-800 z-[100] mt-4 w-64 p-3 shadow-2xl rounded-3xl border border-gray-100"
               >
-                <li className="px-4 py-2 font-bold text-orange-600 border-b border-gray-100 mb-1 uppercase tracking-wide">
-                  {user.name}
-                </li>
-                <li>
-                  <Link href="/my-profile" className="py-2 hover:bg-orange-50">
-                    View Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/settings" className="py-2 hover:bg-orange-50">
-                    Settings
-                  </Link>
-                </li>
-                <li>
-                  <button className="text-red-600 font-bold w-full text-left py-2 hover:bg-red-50">
-                    Logout
-                  </button>
-                </li>
+                <div className="px-4 py-4 mb-3 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl">
+                  <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-1">
+                    Account Holder
+                  </p>
+                  <p className="text-lg font-bold text-gray-900 leading-tight truncate">
+                    {user?.name}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {user?.email}
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <li>
+                    <Link
+                      href="/my-profile"
+                      className="py-3 px-4 text-base font-bold hover:bg-orange-50 rounded-xl transition-all"
+                    >
+                      View Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/"
+                      className="py-3 px-4 text-base font-bold hover:bg-orange-50 rounded-xl transition-all"
+                    >
+                      Account Settings
+                    </Link>
+                  </li>
+
+                  <div className="h-px bg-gray-100 my-2 mx-2"></div>
+
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full py-3 px-4 text-base font-black text-red-600 hover:bg-red-50 rounded-xl transition-all text-left"
+                    >
+                      Sign Out
+                    </button>
+                  </li>
+                </div>
               </ul>
             </div>
           ) : (
             <div className="flex gap-2">
               <Link
                 href="/login"
-                className="btn btn-warning btn-sm md:btn-md text-lg font-medium text-gray-800"
+                className="btn btn-outline btn-warning btn-sm md:btn-md text-lg font-medium"
               >
                 Login
               </Link>

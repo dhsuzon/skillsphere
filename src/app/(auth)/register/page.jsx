@@ -37,8 +37,9 @@ const RegisterPage = () => {
         image,
       },
       {
-        onSuccess: () => {
+        onSuccess: async() => {
           setLoading(false);
+          await authClient.signOut()
           router.push("/login");
         },
         onError: (ctx) => {
