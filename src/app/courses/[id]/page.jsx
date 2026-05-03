@@ -87,7 +87,7 @@ const CourseDetailsPage = async ({ params }) => {
 
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-gray-900 ml-4">
-              What you'll learn
+              What you learn
             </h2>
             <div className="grid gap-4">
               {curriculum.map((lesson, index) => (
