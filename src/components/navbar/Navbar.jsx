@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client"; // আপনার পাথ অনুযায়ী
-import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client"; 
+import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
   const router = useRouter();
+  const path = usePathname();
   const { data: session, isPending } = authClient.useSession();
   const isLoggedIn = !!session;
   const user = session?.user;
@@ -28,7 +29,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/"
-          className="text-lg font-medium hover:text-orange-500 transition-colors py-2 block"
+          className={`${path === "/" ? "bg-orange-500 text-white " : ""}text-lg font-medium transition-colors py-2 block`}
         >
           Home
         </Link>
@@ -36,7 +37,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/courses"
-          className="text-lg font-medium hover:text-orange-500 transition-colors py-2 block"
+          className={`${path === "/courses" ? "bg-orange-500 text-white " : ""}text-lg font-medium transition-colors py-2 block`}
         >
           Courses
         </Link>
@@ -45,7 +46,7 @@ const Navbar = () => {
         <li>
           <Link
             href="/my-profile"
-            className="text-lg font-medium hover:text-orange-500 transition-colors py-2 block"
+            className={`${path === "/my-profile" ? "bg-orange-500 text-white " : ""}text-lg font-medium transition-colors py-2 block`}
           >
             My Profile
           </Link>
@@ -106,7 +107,6 @@ const Navbar = () => {
             <span className="loading loading-spinner loading-sm text-orange-500"></span>
           ) : isLoggedIn ? (
             <div className="dropdown dropdown-end">
-              {/* --- প্রোফাইল আইকন (Avatar) ডিজাইন --- */}
               <div
                 tabIndex={0}
                 role="button"
