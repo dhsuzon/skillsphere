@@ -48,10 +48,10 @@ Follow these steps to run the application on your local machine:
 ```
 
 ### Step 2. Navigate to the project directory
-         -  cd assignment_8
+         .  cd assignment_8
 ### Step 3. Install dependencies 
-         -  npm install
+         .  npm install
 ### Step 4. Run the development server
-         -  npm run dev
+         .  npm run dev
 
 
